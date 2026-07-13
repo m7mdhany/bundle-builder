@@ -2,8 +2,22 @@ import Badge from "../shared/Badge";
 import Price from "../shared/Price";
 import QuantityStepper from "../shared/QuantityStepper";
 import VariantSelector from "./VariantSelector";
+import useBundle from "../../hooks/useBundle";
+
 
 function ProductCard({ product }) {
+  const { state, dispatch } = useBundle();
+  const selection = state.selections[product.id];
+
+  const currentVariant =
+    selection?.selectedVariant ??
+    product.variants[0]?.id ??
+    null;
+
+  const quantity = product.variants.length
+    ? selection?.quantities?.[currentVariant] ?? 0
+    : selection?.quantity ?? 0;
+
   return (
     <article>
       <Badge text={product.badge?.text} />
@@ -18,12 +32,40 @@ function ProductCard({ product }) {
         Learn More
       </a>
 
-      <VariantSelector variants={product.variants} />
-
+      <VariantSelector
+        variants={product.variants}
+        selectedVariant={currentVariant}
+        onSelect={(variantId) =>
+          dispatch({
+            type: "SET_VARIANT",
+            payload: {
+              productId: product.id,
+              variantId,
+            },
+          })
+        }
+      />
+      
       <QuantityStepper
-        value={0}
-        onIncrement={() => { }}
-        onDecrement={() => { }}
+        value={quantity}
+        onIncrement={() =>
+          dispatch({
+            type: "ADD_PRODUCT",
+            payload: {
+              productId: product.id,
+              variantId: currentVariant
+            },
+          })
+        }
+        onDecrement={() =>
+          dispatch({
+            type: "REMOVE_PRODUCT",
+            payload: {
+              productId: product.id,
+              variantId: currentVariant,
+            },
+          })
+        }
       />
 
       <Price
