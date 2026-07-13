@@ -1,14 +1,15 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
 import './App.css'
+import useBundle from './hooks/useBundle'
 
 function App() {
+  const { state, dispatch } = useBundle()
+
+  console.log('state', state)
 
   return (
     <>
-
+      <h1>Bundle Builder</h1>
     </>
   )
 }
