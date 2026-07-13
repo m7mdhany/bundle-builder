@@ -18,6 +18,11 @@ export default function bundleReducer(state, action) {
         ...state,
         currentStep: state.currentStep - 1,
       };
+    case "SET_CURRENT_STEP":
+      return {
+        ...state,
+        currentStep: action.payload,
+      };
     default:
       return state;
   }
