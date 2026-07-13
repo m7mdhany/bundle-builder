@@ -9,7 +9,26 @@ function App() {
 
   return (
     <>
-      <h1>Bundle Builder</h1>
+      <h1>Current Step: {state.currentStep}</h1>
+
+      <button
+        onClick={() =>
+          dispatch({
+            type: "NEXT_STEP",
+          })
+        }
+      >
+        Next
+      </button>
+      <button
+        onClick={() =>
+          dispatch({
+            type: "PREVIOUS_STEP",
+          })
+        }
+      >
+        Previous
+      </button>
     </>
   )
 }
