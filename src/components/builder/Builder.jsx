@@ -1,6 +1,7 @@
 import Step from "../step/Step";
 import useBundle from "../../hooks/useBundle";
 import steps from "../../data/steps";
+import ProductList from "../product/ProductList";
 
 function Builder() {
   const { state, dispatch } = useBundle();
@@ -23,7 +24,7 @@ function Builder() {
             });
           }}
         >
-          {step.id === 1 && <p>Products will go here...</p>}
+          <ProductList category={step.category} />
         </Step>
       ))}
     </section>
