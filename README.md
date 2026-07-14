@@ -1,16 +1,134 @@
-# React + Vite
+# Security Bundle Builder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React application that allows users to build a custom home security bundle by selecting cameras, sensors, accessories, and subscription plans.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Multi-step bundle builder
+- Product variants support
+- Dynamic review panel
+- Live bundle summary
+- Required products support
+- Save bundle for later using Local Storage
+- Checkout flow
+- JSON-driven product catalog
+- Responsive layout
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- React
+- Context API
+- useReducer
+- CSS Modules
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Project Structure
+
+```
+src
+├── components
+├── context
+├── data
+├── hooks
+├── styles
+└── utils
+```
+
+---
+
+## Installation
+
+Clone the repository
+
+```bash
+git clone <repository-url>
+```
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Start development server
+
+```bash
+npm run dev
+```
+
+Create production build
+
+```bash
+npm run build
+```
+
+---
+
+## Product Data
+
+All products are stored in:
+
+```
+src/data/products.json
+```
+
+The UI is generated dynamically from this JSON file.
+
+---
+
+## State Management
+
+Global state is managed using:
+
+- Context API
+- useReducer
+
+The reducer manages:
+
+- Current builder step
+- Product selections
+- Selected variants
+- Quantities
+- Review data
+
+---
+
+## Local Storage
+
+The application supports saving bundles locally.
+
+- **Save my system for later** stores the current selections.
+- Saved bundles are restored automatically when the application loads.
+- **Checkout** clears the saved bundle and resets the builder while keeping required products.
+
+---
+
+## Design Decisions
+
+- Product catalog and user selections are separated.
+- The UI is fully driven by JSON data.
+- Required products are injected automatically.
+- Review and Checkout sections are generated from the current state.
+
+---
+
+## Tradeoffs
+
+- No backend integration.
+- Financing values are static.
+- Shipping is implemented according to the provided design.
+- No automated tests were added.
+
+---
+
+## Future Improvements
+
+- Backend integration
+- Authentication
+- Persistent cloud storage
+- Unit tests
+- End-to-end tests
+- Payment integration
