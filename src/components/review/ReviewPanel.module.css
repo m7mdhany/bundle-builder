@@ -1,0 +1,11 @@
+.reviewPanel {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background: var(--bg-secondary);
+  align-items: start;
+  padding: 32px;
+  border-radius: 10px;
+  margin: 32px;
+  gap: 32px;
+}

@@ -7,9 +7,7 @@ import App from './App.jsx'
 import BundleProvider from './context/BundleProvider.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
     <BundleProvider>
       <App />
     </BundleProvider>
-  </StrictMode>,
 )

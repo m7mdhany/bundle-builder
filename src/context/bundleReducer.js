@@ -1,13 +1,49 @@
 export const initialState = {
   currentStep: 1,
 
-  selections: {},
+  selections: {
+    "wyze-cam-v4": {
+      category: "cameras",
+      selectedVariant: "white",
+      quantities: {
+        white: 1,
+      },
+    },
+
+    "wyze-cam-pan-v3": {
+      category: "cameras",
+      selectedVariant: "black",
+      quantities: {
+        black: 2,
+      },
+    },
+
+    "wyze-sense-motion-sensor": {
+      category: "sensors",
+      quantity: 2,
+    },
+
+    "wyze-sense-hub": {
+      category: "sensors",
+      quantity: 1,
+    },
+
+    "wyze-microsd-card-256gb": {
+      category: "accessories",
+      quantity: 2,
+    },
+
+    "cam-unlimited": {
+      category: "plans",
+      quantity: 1,
+    },
+  },
 
   summary: {
-    cameras: 0,
-    plans: 0,
-    sensors: 0,
-    accessories: 0,
+    cameras: 2,
+    plans: 1,
+    sensors: 2,
+    accessories: 1,
   },
 };
 
@@ -25,21 +61,22 @@ export default function bundleReducer(state, action) {
 
       const productId = product.id;
 
-      if (!state.selections[productId]) {
-        return state;
-      }
-
       return {
         ...state,
 
         selections: {
           ...state.selections,
 
-          [productId]: {
-            ...state.selections[productId],
-
-            selectedVariant: variantId,
-          },
+          [productId]: state.selections[productId]
+            ? {
+              ...state.selections[productId],
+              selectedVariant: variantId,
+            }
+            : {
+              category: product.category,
+              selectedVariant: variantId,
+              quantities: {},
+            },
         },
       };
     }
@@ -55,7 +92,8 @@ export default function bundleReducer(state, action) {
         selections[productId] = product.variants.length
           ? {
             category: product.category,
-            selectedVariant: variantId,
+            selectedVariant:
+              selections[productId]?.selectedVariant ?? variantId,
             quantities: {
               [variantId]: 1,
             },
@@ -67,8 +105,6 @@ export default function bundleReducer(state, action) {
       } else {
         if (product.variants.length) {
           const selectedProduct = selections[productId];
-
-          selectedProduct.selectedVariant = variantId;
 
           selectedProduct.quantities[variantId] =
             (selectedProduct.quantities[variantId] || 0) + 1;
@@ -123,7 +159,93 @@ export default function bundleReducer(state, action) {
         selections,
       };
     }
+    case "ADD_REVIEW_PRODUCT": {
+      const { product } = action.payload;
 
+      const productId = product.id;
+
+      const selections = { ...state.selections };
+
+      const selectedProduct = selections[productId];
+
+      if (!selectedProduct) {
+        return state;
+      }
+
+      if (product.variants.length) {
+        const variantId =
+          Object.keys(selectedProduct.quantities)[0];
+
+        selectedProduct.quantities[variantId]++;
+      } else {
+        selectedProduct.quantity++;
+      }
+
+      return {
+        ...state,
+        selections,
+      };
+    }
+
+    case "REMOVE_REVIEW_PRODUCT": {
+      const { product } = action.payload;
+
+      const productId = product.id;
+
+      const selections = { ...state.selections };
+
+      const selectedProduct = selections[productId];
+
+      if (!selectedProduct) {
+        return state;
+      }
+
+      if (product.variants.length) {
+        const variantId = Object.keys(
+          selectedProduct.quantities
+        )[0];
+
+        if (!variantId) {
+          return state;
+        }
+
+        selectedProduct.quantities[variantId]--;
+
+        if (selectedProduct.quantities[variantId] <= 0) {
+          delete selectedProduct.quantities[variantId];
+        }
+
+        if (
+          Object.keys(selectedProduct.quantities).length === 0
+        ) {
+          delete selections[productId];
+        }
+      } else {
+        selectedProduct.quantity--;
+
+        if (selectedProduct.quantity <= 0) {
+          delete selections[productId];
+        }
+      }
+
+      return {
+        ...state,
+        selections,
+      };
+    }
+
+    case "RESET_BUNDLE":
+      return {
+        ...state,
+        currentStep: 1,
+        selections: {},
+        summary: {
+          cameras: 0,
+          plans: 0,
+          sensors: 0,
+          accessories: 0,
+        },
+      };
 
     default:
       return state;

@@ -1,0 +1,56 @@
+.section {
+  display: flex;
+  flex-direction: column;
+
+  gap: 16px;
+}
+
+.banner {
+  padding: 12px 16px;
+
+  border-radius: 8px;
+
+
+  color: var(--variant);
+
+  text-align: center;
+
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.checkoutButton {
+  height: 56px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: var(--primary);
+
+  color: #fff;
+
+  font-size: 24px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: opacity .2s ease;
+}
+
+.checkoutButton:hover {
+  opacity: .9;
+}
+
+.saveButton {
+  border: none;
+
+  background: transparent;
+
+  color: var(--text-light);
+
+  text-decoration: underline;
+
+  font-size: 16px;
+
+  cursor: pointer;
+}

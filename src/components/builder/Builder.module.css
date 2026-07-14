@@ -3,7 +3,7 @@
   flex-direction: column;
   /* gap: 32px; */
   padding: 32px;
-  border-radius: 16px;
+  border-radius: 10px;
 }
 
 .actions {

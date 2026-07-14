@@ -1,0 +1,52 @@
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-top: 24px;
+
+  border-top: 1px solid var(--border);
+}
+
+.info {
+  display: flex;
+  align-items: center;
+
+  gap: 16px;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+
+  object-fit: contain;
+}
+
+.title {
+  color: var(--text);
+
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+}
+
+.comparePrice {
+  color: #6F7882;
+
+  font-size: 16px;
+
+  text-decoration: line-through;
+}
+
+.currentPrice {
+  color: var(--primary);
+
+  font-size: 16px;
+  font-weight: 600;
+}

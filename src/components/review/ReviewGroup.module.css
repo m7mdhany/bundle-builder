@@ -1,0 +1,27 @@
+.group {
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+
+  padding-bottom: 32px;
+
+  border-top: 1px solid var(--border);
+  padding: 15px 0px;
+}
+
+.title {
+  margin: 0;
+  color: #A8B2BD;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+
+
+}

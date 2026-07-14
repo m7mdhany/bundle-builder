@@ -1,0 +1,91 @@
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 24px;
+
+
+}
+
+.info {
+  display: flex;
+  align-items: center;
+
+  gap: 16px;
+}
+
+.image {
+  width: 56px;
+  height: 56px;
+
+  object-fit: contain;
+
+  border-radius: 6px;
+  background-color: var(--bg);
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  margin: 0;
+
+  color: var(--text);
+
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.required {
+  color: var(--text-light);
+
+  font-weight: 400;
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+
+  gap: 32px;
+}
+
+.quantity {
+  min-width: 20px;
+
+  text-align: center;
+
+  color: var(--text);
+
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+
+  gap: 32px;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+}
+
+.comparePrice {
+  color: #6F7882;
+  font-size: 16px;
+  text-decoration: line-through;
+}
+
+.currentPrice {
+  color: var(--primary);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 16px;
+}

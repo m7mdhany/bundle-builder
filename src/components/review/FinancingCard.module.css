@@ -1,0 +1,45 @@
+.financing {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 8px;
+
+  background: var(--primary);
+  color: #fff;
+  border-radius: 8px;
+
+  width: fit-content;
+}
+
+
+
+.right {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+.comparePrice {
+  color: var(--text-light);
+
+  font-size: 22px;
+  font-weight: 500;
+
+  text-decoration: line-through;
+}
+
+.totalPrice {
+  color: var(--primary);
+
+  font-size: 28px;
+  font-weight: 700;
+}
