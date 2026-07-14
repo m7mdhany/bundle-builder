@@ -3,6 +3,8 @@ import { useReducer } from "react";
 import BundleContext from "./BundleContext";
 import bundleReducer, { initialState } from "./bundleReducer";
 
+import getRequiredSelections from "../utils/getRequiredSelections";
+
 function BundleProvider({ children }) {
   const [state, dispatch] = useReducer(
     bundleReducer,
@@ -11,12 +13,21 @@ function BundleProvider({ children }) {
       const savedSelections = localStorage.getItem("bundle");
 
       if (!savedSelections) {
-        return initialState;
+        return {
+          ...initialState,
+          selections: {
+            ...getRequiredSelections(),
+            ...initialState.selections,
+          },
+        };
       }
 
       return {
         ...initialState,
-        selections: JSON.parse(savedSelections),
+        selections: {
+          ...getRequiredSelections(),
+          ...JSON.parse(savedSelections),
+        },
       };
     }
   );

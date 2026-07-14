@@ -39,6 +39,7 @@ function ReviewRow({ product, selection }) {
       <div className={styles.actions}>
         <QuantityStepper
           value={quantity}
+          disableDecrement={product.isRequired}
           onIncrement={() =>
             dispatch({
               type: "ADD_REVIEW_PRODUCT",

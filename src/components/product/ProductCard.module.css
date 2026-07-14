@@ -93,3 +93,9 @@
   justify-content: space-between;
   align-items: flex-end;
 }
+
+.required {
+  color: var(--text-light);
+  font-size: 12px;
+  font-weight: 400;
+}

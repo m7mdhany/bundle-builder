@@ -1,3 +1,4 @@
+import getRequiredSelections from "../utils/getRequiredSelections";
 export const initialState = {
   currentStep: 1,
 
@@ -126,6 +127,16 @@ export default function bundleReducer(state, action) {
 
       const selections = { ...state.selections };
 
+      if (product.isRequired) {
+        const currentQuantity = product.variants.length
+          ? selectedProduct.quantities[variantId] ?? 0
+          : selections[productId].quantity;
+
+        if (currentQuantity <= 1) {
+          return state;
+        }
+      }
+
       if (!selections[productId]) {
         return state;
       }
@@ -238,7 +249,7 @@ export default function bundleReducer(state, action) {
       return {
         ...state,
         currentStep: 1,
-        selections: {},
+        selections: getRequiredSelections(),
         summary: {
           cameras: 0,
           plans: 0,

@@ -42,8 +42,13 @@ function ProductCard({ product }) {
       </div>
 
       <div className={styles.content}>
-        <h3>{product.name}</h3>
-
+        <h3>{product.name}
+          {product.isRequired && (
+            <span className={styles.required}>
+              (Required)
+            </span>
+          )}
+        </h3>
         <p>
           {product.description}{" "}
           <a href="#" onClick={(e) => e.preventDefault()}>
@@ -51,6 +56,7 @@ function ProductCard({ product }) {
           </a>
         </p>
       </div>
+
       <div className={styles.footer}>
         <div className={styles.variantWrapper}>
           <VariantSelector
@@ -72,6 +78,7 @@ function ProductCard({ product }) {
         <div className={styles.bottomRow}>
           <QuantityStepper
             value={displayQuantity}
+            disableDecrement={product.isRequired}
             onIncrement={() =>
               dispatch({
                 type: "ADD_PRODUCT",
