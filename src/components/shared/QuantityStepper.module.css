@@ -1,0 +1,20 @@
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.stepper button {
+  width: 20px;
+  height: 20px;
+
+  border: none;
+  border-radius: 4px;
+
+  cursor: pointer;
+}
+
+.stepper span {
+  min-width: 10px;
+  text-align: center;
+}

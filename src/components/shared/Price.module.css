@@ -1,0 +1,14 @@
+.price {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.compare {
+  color: #d8392b;
+  text-decoration: line-through;
+}
+
+.current {
+  color: #575757;
+}

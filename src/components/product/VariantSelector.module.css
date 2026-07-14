@@ -1,0 +1,46 @@
+.variantSelector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.variant {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  padding: 2px 5px;
+
+  background: var(--bg);
+
+  border: 1px solid var(--border);
+  border-radius: 4px;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.variant:hover {
+  border-color: var(--primary);
+}
+
+.active {
+  border-color: var(--variant);
+  background: var(--variant-light);
+}
+
+.variant img {
+  width: 22px;
+  height: 22px;
+
+  object-fit: contain;
+}
+
+.variant span {
+  font-family: var(--font-family);
+  font-size: 10px;
+  font-weight: 500;
+
+  color: var(--text);
+}

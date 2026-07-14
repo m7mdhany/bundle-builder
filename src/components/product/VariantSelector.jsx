@@ -1,3 +1,5 @@
+import styles from "./VariantSelector.module.css";
+
 function VariantSelector({
   variants,
   selectedVariant,
@@ -6,14 +8,21 @@ function VariantSelector({
   if (!variants.length) return null;
 
   return (
-    <div>
+    <div className={styles.variantSelector}>
       {variants.map((variant) => (
         <button
           key={variant.id}
           type="button"
+          className={`${styles.variant} ${selectedVariant === variant.id ? styles.active : ""
+            }`}
           onClick={() => onSelect(variant.id)}
         >
-          {variant.label}
+          <img
+            src={`/images/${variant.image}`}
+            alt={variant.label}
+          />
+
+          <span>{variant.label}</span>
         </button>
       ))}
     </div>

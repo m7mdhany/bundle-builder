@@ -15,15 +15,18 @@
       "variants": [
         {
           "id": "white",
-          "label": "White"
+          "label": "White",
+          "image": "cameras/variants/wyze-cam-v4-white.png"
         },
         {
           "id": "grey",
-          "label": "Grey"
+          "label": "Grey",
+          "image": "cameras/variants/wyze-cam-v4-grey.png"
         },
         {
           "id": "black",
-          "label": "Black"
+          "label": "Black",
+          "image": "cameras/variants/wyze-cam-v4-black.png"
         }
       ]
     },
@@ -42,11 +45,13 @@
       "variants": [
         {
           "id": "white",
-          "label": "White"
+          "label": "White",
+          "image": "cameras/variants/wyze-cam-pan-v3-white.png"
         },
         {
           "id": "black",
-          "label": "Black"
+          "label": "Black",
+          "image": "cameras/variants/wyze-cam-pan-v3-black.png"
         }
       ]
     },
@@ -65,11 +70,13 @@
       "variants": [
         {
           "id": "white",
-          "label": "White"
+          "label": "White",
+          "image": "cameras/variants/wyze-cam-floodlight-v2-white.png"
         },
         {
           "id": "black",
-          "label": "Black"
+          "label": "Black",
+          "image": "cameras/variants/wyze-cam-floodlight-v2-black.png"
         }
       ]
     },
@@ -96,11 +103,13 @@
       "variants": [
         {
           "id": "white",
-          "label": "White"
+          "label": "White",
+          "image": "cameras/variants/wyze-battery-cam-pro-white.png"
         },
         {
           "id": "black",
-          "label": "Black"
+          "label": "Black",
+          "image": "cameras/variants/wyze-battery-cam-pro-black.png"
         }
       ]
     }

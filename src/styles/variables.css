@@ -1,0 +1,18 @@
+:root {
+  --bg: #ffffff;
+  --bg-secondary: #EDF4FF;
+
+  --primary: #4E2FD2;
+  --primary-light: #4E2FD2B2;
+
+  --variant: #0AA288;
+  --variant-light: #1DF0BB0A;
+
+  --text: #1f1f1f;
+  --text-light: #1F1F1FBF;
+
+  --border: #CCCCCC;
+
+  --font-family: 'Inter', sans-serif;
+
+}

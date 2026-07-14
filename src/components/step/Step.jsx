@@ -1,5 +1,5 @@
 import StepHeader from "./StepHeader";
-
+import styles from "./Step.module.css";
 function Step({
   step,
   title,

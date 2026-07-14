@@ -1,12 +1,14 @@
+import styles from "./ProductCard.module.css";
+
 import Badge from "../shared/Badge";
 import Price from "../shared/Price";
 import QuantityStepper from "../shared/QuantityStepper";
 import VariantSelector from "./VariantSelector";
 import useBundle from "../../hooks/useBundle";
 
-
 function ProductCard({ product }) {
   const { state, dispatch } = useBundle();
+
   const selection = state.selections[product.id];
 
   const currentVariant =
@@ -19,18 +21,30 @@ function ProductCard({ product }) {
     : selection?.quantity ?? 0;
 
   return (
-    <article>
-      <Badge text={product.badge?.text} />
+    <article
+      className={`${styles.productCard} ${quantity > 0 ? styles.selected : ""
+        }`}
+    >
+      <div className={styles.imageWrapper}>
+        <Badge text={product.badge?.text} />
 
-      <img src={`/images/${product.image}`} alt={product.name} />
+        <img
+          className={styles.image}
+          src={`/images/${product.image}`}
+          alt={product.name}
+        />
+      </div>
 
-      <h3>{product.name}</h3>
+      <div className={styles.content}>
+        <h3>{product.name}</h3>
 
-      <p>{product.description}</p>
-
-      <a href="#" onClick={(e) => e.preventDefault()}>
-        Learn More
-      </a>
+        <p>
+          {product.description}{" "}
+          <a href="#" onClick={(e) => e.preventDefault()}>
+            Learn More
+          </a>
+        </p>
+      </div>
 
       <VariantSelector
         variants={product.variants}
@@ -45,33 +59,35 @@ function ProductCard({ product }) {
           })
         }
       />
-      
-      <QuantityStepper
-        value={quantity}
-        onIncrement={() =>
-          dispatch({
-            type: "ADD_PRODUCT",
-            payload: {
-              productId: product.id,
-              variantId: currentVariant
-            },
-          })
-        }
-        onDecrement={() =>
-          dispatch({
-            type: "REMOVE_PRODUCT",
-            payload: {
-              productId: product.id,
-              variantId: currentVariant,
-            },
-          })
-        }
-      />
 
-      <Price
-        price={product.price}
-        compareAtPrice={product.compareAtPrice}
-      />
+      <div className={styles.footer}>
+        <QuantityStepper
+          value={quantity}
+          onIncrement={() =>
+            dispatch({
+              type: "ADD_PRODUCT",
+              payload: {
+                productId: product.id,
+                variantId: currentVariant,
+              },
+            })
+          }
+          onDecrement={() =>
+            dispatch({
+              type: "REMOVE_PRODUCT",
+              payload: {
+                productId: product.id,
+                variantId: currentVariant,
+              },
+            })
+          }
+        />
+
+        <Price
+          price={product.price}
+          compareAtPrice={product.compareAtPrice}
+        />
+      </div>
     </article>
   );
 }
