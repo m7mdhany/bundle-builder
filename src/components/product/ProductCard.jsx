@@ -16,13 +16,19 @@ function ProductCard({ product }) {
     product.variants[0]?.id ??
     null;
 
-  const quantity = product.variants.length
+  const displayQuantity = product.variants.length
     ? selection?.quantities?.[currentVariant] ?? 0
     : selection?.quantity ?? 0;
 
+  const isSelected = product.variants.length
+    ? Object.values(selection?.quantities ?? {}).some(
+      (qty) => qty > 0
+    )
+    : (selection?.quantity ?? 0) > 0;
+
   return (
     <article
-      className={`${styles.productCard} ${quantity > 0 ? styles.selected : ""
+      className={`${styles.productCard} ${isSelected ? styles.selected : ""
         }`}
     >
       <div className={styles.imageWrapper}>
@@ -53,7 +59,7 @@ function ProductCard({ product }) {
           dispatch({
             type: "SET_VARIANT",
             payload: {
-              productId: product.id,
+              product,
               variantId,
             },
           })
@@ -62,12 +68,12 @@ function ProductCard({ product }) {
 
       <div className={styles.footer}>
         <QuantityStepper
-          value={quantity}
+          value={displayQuantity}
           onIncrement={() =>
             dispatch({
               type: "ADD_PRODUCT",
               payload: {
-                productId: product.id,
+                product,
                 variantId: currentVariant,
               },
             })
@@ -76,7 +82,7 @@ function ProductCard({ product }) {
             dispatch({
               type: "REMOVE_PRODUCT",
               payload: {
-                productId: product.id,
+                product,
                 variantId: currentVariant,
               },
             })

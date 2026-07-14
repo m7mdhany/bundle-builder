@@ -1,5 +1,6 @@
-import StepHeader from "./StepHeader";
 import styles from "./Step.module.css";
+import StepHeader from "./StepHeader";
+
 function Step({
   step,
   title,
@@ -9,7 +10,14 @@ function Step({
   children,
 }) {
   return (
-    <section>
+    <section
+      className={`${styles.step} ${isOpen ? styles.open : ""
+        }`}
+    >
+      <div className={styles.stepNumber}>
+        Step {step} of 4
+      </div>
+
       <StepHeader
         step={step}
         title={title}
@@ -19,7 +27,7 @@ function Step({
       />
 
       {isOpen && (
-        <div>
+        <div className={styles.content}>
           {children}
         </div>
       )}

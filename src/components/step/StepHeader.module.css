@@ -1,0 +1,65 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+
+  padding: 0;
+
+  background: transparent;
+  border: none;
+
+  cursor: pointer;
+
+  text-align: left;
+
+  border-top: 1px solid black;
+}
+
+.closeBorder {
+  border-bottom: 1px solid black;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+
+}
+
+
+
+.titleRow h2 {
+  margin: 16px;
+
+  color: var(--text);
+
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+
+  gap: 16px;
+}
+
+.selected {
+  color: var(--text-light);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--primary);
+  border-bottom: none;
+}
+
+.arrow {
+  transition: .2s;
+  color: var(--primary);
+}
+
+.open {
+  transform: rotate(180deg);
+}

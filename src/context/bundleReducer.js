@@ -3,8 +3,14 @@ export const initialState = {
 
   selections: {},
 
-
+  summary: {
+    cameras: 0,
+    plans: 0,
+    sensors: 0,
+    accessories: 0,
+  },
 };
+
 
 export default function bundleReducer(state, action) {
   switch (action.type) {
@@ -15,27 +21,23 @@ export default function bundleReducer(state, action) {
       };
 
     case "SET_VARIANT": {
-      const { productId, variantId } = action.payload;
+      const { product, variantId } = action.payload;
+
+      const productId = product.id;
 
       if (!state.selections[productId]) {
-        return {
-          ...state,
-          selections: {
-            ...state.selections,
-            [productId]: {
-              selectedVariant: variantId,
-              quantities: {},
-            },
-          },
-        };
+        return state;
       }
 
       return {
         ...state,
+
         selections: {
           ...state.selections,
+
           [productId]: {
             ...state.selections[productId],
+
             selectedVariant: variantId,
           },
         },
@@ -43,31 +45,34 @@ export default function bundleReducer(state, action) {
     }
 
     case "ADD_PRODUCT": {
-      const { productId, variantId } = action.payload;
+      const { product, variantId } = action.payload;
+
+      const productId = product.id;
 
       const selections = { ...state.selections };
 
       if (!selections[productId]) {
-        selections[productId] = variantId
+        selections[productId] = product.variants.length
           ? {
+            category: product.category,
             selectedVariant: variantId,
             quantities: {
               [variantId]: 1,
             },
           }
           : {
+            category: product.category,
             quantity: 1,
           };
       } else {
-        if (variantId) {
-          const product = selections[productId];
+        if (product.variants.length) {
+          const selectedProduct = selections[productId];
 
-          product.selectedVariant = variantId;
+          selectedProduct.selectedVariant = variantId;
 
-          product.quantities[variantId] =
-            (product.quantities[variantId] || 0) + 1;
-        }
-        else {
+          selectedProduct.quantities[variantId] =
+            (selectedProduct.quantities[variantId] || 0) + 1;
+        } else {
           selections[productId].quantity++;
         }
       }
@@ -79,7 +84,9 @@ export default function bundleReducer(state, action) {
     }
 
     case "REMOVE_PRODUCT": {
-      const { productId, variantId } = action.payload;
+      const { product, variantId } = action.payload;
+
+      const productId = product.id;
 
       const selections = { ...state.selections };
 
@@ -87,20 +94,20 @@ export default function bundleReducer(state, action) {
         return state;
       }
 
-      if (variantId) {
-        const product = selections[productId];
+      if (product.variants.length) {
+        const selectedProduct = selections[productId];
 
-        if (!product.quantities[variantId]) {
+        if (!selectedProduct.quantities[variantId]) {
           return state;
         }
 
-        product.quantities[variantId]--;
+        selectedProduct.quantities[variantId]--;
 
-        if (product.quantities[variantId] <= 0) {
-          delete product.quantities[variantId];
+        if (selectedProduct.quantities[variantId] <= 0) {
+          delete selectedProduct.quantities[variantId];
         }
 
-        if (Object.keys(product.quantities).length === 0) {
+        if (Object.keys(selectedProduct.quantities).length === 0) {
           delete selections[productId];
         }
       } else {

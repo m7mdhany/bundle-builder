@@ -1,5 +1,6 @@
+import styles from "./StepHeader.module.css";
+
 function StepHeader({
-  step,
   title,
   selectedCount,
   isOpen,
@@ -8,19 +9,29 @@ function StepHeader({
   return (
     <button
       type="button"
+      className={`${styles.header} ${!isOpen ? styles.closeBorder : ""}`}
       onClick={onToggle}
-    >      <div>
-        <span>STEP {step} OF 4</span>
+    >
+      <div className={styles.left}>
 
-        <h2>{title}</h2>
+        <div className={styles.titleRow}>
+          <h2>{title}</h2>
+        </div>
       </div>
 
-      <div>
-        <span>{selectedCount} selected</span>
-
-        <span>{isOpen ? "▲" : "▼"}</span>
+      <div className={styles.right}>
+        {selectedCount > 0 && (
+          <span className={styles.selected}>
+            {selectedCount} selected
+          </span>
+        )}
+        <span
+          className={`${styles.arrow} ${isOpen ? styles.open : ""
+            }`}
+        >
+          ▼
+        </span>
       </div>
-      
     </button>
   );
 }

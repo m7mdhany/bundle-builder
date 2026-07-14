@@ -9,7 +9,10 @@ function ProductList({ category }) {
       {products[category].map((product) => (
         <ProductCard
           key={product.id}
-          product={product}
+          product={{
+            ...product,
+            category,
+          }}
         />
       ))}
     </div>
