@@ -1,10 +1,6 @@
 .step {
-  /* padding: 10px 0px; */
+  padding: 5px 0px;
   
-}
-
-.step:last-child {
-  border-bottom: 2px solid rgba(31, 31, 31, .08);
 }
 
 .open {
@@ -12,10 +8,12 @@
   background: var(--bg-secondary);
 
   border-radius: 16px;
+
+
 }
 
 .content {
-  padding-top: 28px;
+  /* padding-top: 28px; */
 }
 
 .stepNumber {

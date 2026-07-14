@@ -2,8 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 18px;
-
-  padding: 15px 11px;
+  padding: 11px;
 
   background: var(--bg);
 
@@ -31,14 +30,17 @@
 }
 
 .image {
-  width: 120px;
+  width: 100%;
+  max-height: 120px;
   object-fit: contain;
 }
 
 .content {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   gap: 8px;
+  height: 100%;
 }
 
 .content h3 {
@@ -76,8 +78,18 @@
 
 .footer {
   display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: auto;
+}
+
+.variantWrapper {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.bottomRow {
+  display: flex;
   justify-content: space-between;
   align-items: flex-end;
-
-  margin-top: auto;
 }

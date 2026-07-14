@@ -119,6 +119,7 @@
       "id": "cam-unlimited",
       "name": "Cam Unlimited",
       "description": "Home monitoring plan",
+      "image": "plans/cam-unlimited.png",
       "price": 9.99,
       "compareAtPrice": 12.99,
       "badge": null,
@@ -143,8 +144,8 @@
       "name": "Wyze Sense Hub",
       "description": "",
       "image": "sensors/wyze-sense-hub.png",
-      "price": 29.92,
-      "compareAtPrice": null,
+      "price": 0.00,
+      "compareAtPrice": 29.92,
       "badge": {
         "type": "label",
         "text": "FREE"

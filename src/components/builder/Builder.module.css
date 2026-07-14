@@ -2,9 +2,7 @@
   display: flex;
   flex-direction: column;
   /* gap: 32px; */
-
   padding: 32px;
-
   border-radius: 16px;
 }
 
@@ -12,20 +10,20 @@
   display: flex;
   justify-content: center;
 
-  margin-top: 32px;
+  margin: 32px;
 }
 
 .nextButton {
-  padding: 14px 32px;
+  padding: 5px 24px;
 
-  border: 2px solid var(--primary);
-  border-radius: 8px;
+  border: 1px solid var(--primary);
+  border-radius: 7px;
 
   background: transparent;
 
   color: var(--primary);
 
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
 
   cursor: pointer;
@@ -35,6 +33,5 @@
 
 .nextButton:hover {
   background: var(--primary);
-
   color: var(--bg);
 }

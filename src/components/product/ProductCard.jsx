@@ -51,48 +51,52 @@ function ProductCard({ product }) {
           </a>
         </p>
       </div>
-
-      <VariantSelector
-        variants={product.variants}
-        selectedVariant={currentVariant}
-        onSelect={(variantId) =>
-          dispatch({
-            type: "SET_VARIANT",
-            payload: {
-              product,
-              variantId,
-            },
-          })
-        }
-      />
-
       <div className={styles.footer}>
-        <QuantityStepper
-          value={displayQuantity}
-          onIncrement={() =>
-            dispatch({
-              type: "ADD_PRODUCT",
-              payload: {
-                product,
-                variantId: currentVariant,
-              },
-            })
-          }
-          onDecrement={() =>
-            dispatch({
-              type: "REMOVE_PRODUCT",
-              payload: {
-                product,
-                variantId: currentVariant,
-              },
-            })
-          }
-        />
+        <div className={styles.variantWrapper}>
+          <VariantSelector
+            className={styles.variantSelector}
+            variants={product.variants}
+            selectedVariant={currentVariant}
+            onSelect={(variantId) =>
+              dispatch({
+                type: "SET_VARIANT",
+                payload: {
+                  product,
+                  variantId,
+                },
+              })
+            }
+          />
+        </div>
 
-        <Price
-          price={product.price}
-          compareAtPrice={product.compareAtPrice}
-        />
+        <div className={styles.bottomRow}>
+          <QuantityStepper
+            value={displayQuantity}
+            onIncrement={() =>
+              dispatch({
+                type: "ADD_PRODUCT",
+                payload: {
+                  product,
+                  variantId: currentVariant,
+                },
+              })
+            }
+            onDecrement={() =>
+              dispatch({
+                type: "REMOVE_PRODUCT",
+                payload: {
+                  product,
+                  variantId: currentVariant,
+                },
+              })
+            }
+          />
+
+          <Price
+            price={product.price}
+            compareAtPrice={product.compareAtPrice}
+          />
+        </div>
       </div>
     </article>
   );
