@@ -1,16 +1,97 @@
-# React + Vite
+# Security Bundle Builder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React application that allows users to build a custom home security bundle by selecting cameras, sensors, accessories, and subscription plans.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Multi-step bundle builder
+- Product variants support
+- Dynamic review panel
+- Bundle summary
+- Local storage support (Save system for later)
+- Responsive layout
+- JSON-driven products
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- CSS Modules
+- Context API
+- useReducer
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+src
+├── components
+├── context
+├── data
+├── hooks
+├── utils
+└── styles
+```
+
+## Installation
+
+Clone the repository
+
+```bash
+git clone <repo-url>
+```
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Run the project
+
+```bash
+npm run dev
+```
+
+Build
+
+```bash
+npm run build
+```
+
+## Data
+
+All products are stored inside:
+
+```
+src/data/products.json
+```
+
+The application is completely driven by this JSON file.
+
+## State Management
+
+The application uses:
+
+- Context API
+- useReducer
+
+Bundle selections are managed through a centralized reducer.
+
+## Local Storage
+
+Clicking **Save my system for later** stores the current bundle in Local Storage.
+
+When the application loads, saved selections are restored automatically.
+
+Clicking **Checkout** clears both Local Storage and the current bundle.
+
+## Decisions
+
+- Used Context API instead of Redux because the application has a single global state.
+- Product information is stored in JSON while user selections are stored separately in state.
+- The Review section is generated dynamically from the current selections.
+
+## Tradeoffs
+
+- No backend was implemented.
+- Financing values are currently static.
+- Shipping cost is displayed according to the provided design.
