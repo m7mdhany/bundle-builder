@@ -7,17 +7,23 @@ A React application that allows users to build a custom home security bundle by 
 - Multi-step bundle builder
 - Product variants support
 - Dynamic review panel
-- Bundle summary
-- Local storage support (Save system for later)
+- Live bundle summary
+- Required products support
+- Save bundle for later using Local Storage
+- Checkout flow
+- JSON-driven product catalog
 - Responsive layout
-- JSON-driven products
+
+---
 
 ## Tech Stack
 
 - React
-- CSS Modules
 - Context API
 - useReducer
+- CSS Modules
+
+---
 
 ## Project Structure
 
@@ -27,16 +33,18 @@ src
 ├── context
 ├── data
 ├── hooks
-├── utils
-└── styles
+├── styles
+└── utils
 ```
+
+---
 
 ## Installation
 
 Clone the repository
 
 ```bash
-git clone <repo-url>
+git clone <repository-url>
 ```
 
 Install dependencies
@@ -45,53 +53,82 @@ Install dependencies
 npm install
 ```
 
-Run the project
+Start development server
 
 ```bash
 npm run dev
 ```
 
-Build
+Create production build
 
 ```bash
 npm run build
 ```
 
-## Data
+---
 
-All products are stored inside:
+## Product Data
+
+All products are stored in:
 
 ```
 src/data/products.json
 ```
 
-The application is completely driven by this JSON file.
+The UI is generated dynamically from this JSON file.
+
+---
 
 ## State Management
 
-The application uses:
+Global state is managed using:
 
 - Context API
 - useReducer
 
-Bundle selections are managed through a centralized reducer.
+The reducer manages:
+
+- Current builder step
+- Product selections
+- Selected variants
+- Quantities
+- Review data
+
+---
 
 ## Local Storage
 
-Clicking **Save my system for later** stores the current bundle in Local Storage.
+The application supports saving bundles locally.
 
-When the application loads, saved selections are restored automatically.
+- **Save my system for later** stores the current selections.
+- Saved bundles are restored automatically when the application loads.
+- **Checkout** clears the saved bundle and resets the builder while keeping required products.
 
-Clicking **Checkout** clears both Local Storage and the current bundle.
+---
 
-## Decisions
+## Design Decisions
 
-- Used Context API instead of Redux because the application has a single global state.
-- Product information is stored in JSON while user selections are stored separately in state.
-- The Review section is generated dynamically from the current selections.
+- Product catalog and user selections are separated.
+- The UI is fully driven by JSON data.
+- Required products are injected automatically.
+- Review and Checkout sections are generated from the current state.
+
+---
 
 ## Tradeoffs
 
-- No backend was implemented.
-- Financing values are currently static.
-- Shipping cost is displayed according to the provided design.
+- No backend integration.
+- Financing values are static.
+- Shipping is implemented according to the provided design.
+- No automated tests were added.
+
+---
+
+## Future Improvements
+
+- Backend integration
+- Authentication
+- Persistent cloud storage
+- Unit tests
+- End-to-end tests
+- Payment integration
