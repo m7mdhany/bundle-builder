@@ -1,7 +1,18 @@
 .layout {
-  width: 100%;
   max-width: 1440px;
-
   margin: 0 auto;
   padding: 32px 40px;
+}
+
+@media (max-height: 1077px) {
+  .layout {
+    max-width: 1440px;
+    display: flex;
+    margin: 0 auto;
+    padding: 32px 40px;
+  }
+
+  .layout> :first-child {
+    width: 90%
+  }
 }

@@ -6,6 +6,19 @@
   align-items: start;
   padding: 32px;
   border-radius: 10px;
-  margin: 32px;
+  margin-top: 32px;
   gap: 32px;
+}
+
+@media (max-height: 1077px) {
+  .reviewPanel {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: var(--bg-secondary);
+    align-items: start;
+    padding: 32px;
+    border-radius: 10px;
+    gap: 32px;
+  }
 }

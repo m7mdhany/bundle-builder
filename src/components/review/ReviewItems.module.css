@@ -1,8 +1,6 @@
 .reviewItems {
   display: flex;
   flex-direction: column;
-
-  /* gap: 40px; */
 }
 
 .header {
@@ -30,4 +28,16 @@
 
   font-size: 16px;
   line-height: 1.6;
+}
+
+@media(max-height: 1077px) {
+
+
+  .header h2 {
+    font-size: 32px;
+  }
+
+  .header p {
+    font-size: 14px;
+  }
 }

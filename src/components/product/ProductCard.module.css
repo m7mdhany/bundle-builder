@@ -91,11 +91,46 @@
 .bottomRow {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 
 .required {
   color: var(--text-light);
   font-size: 12px;
   font-weight: 400;
+}
+
+@media (max-height : 1077px) {
+
+  .productCardTablet {
+    display: flex;
+    flex-direction: row;
+    gap: 18px;
+    padding: 11px;
+    /* width: 500px; */
+    background: var(--bg);
+    box-sizing: border-box;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    transition: border-color .2s ease;
+    min-width: 370px;
+  }
+
+  .imageWrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 120px;
+  }
+
+  .tabletContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 8px;
+    height: 100%;
+  }
+
 }
