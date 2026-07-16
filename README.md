@@ -1,4 +1,4 @@
-# Security Bundle Builder
+# Bundle Builder
 
 A React application that allows users to build a custom home security bundle by selecting cameras, sensors, accessories, and subscription plans.
 
@@ -27,7 +27,7 @@ A React application that allows users to build a custom home security bundle by 
 
 ## Project Structure
 
-```
+```text
 src
 ├── components
 ├── context
@@ -44,7 +44,7 @@ src
 Clone the repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/m7mdhany/bundle-builder.git
 ```
 
 Install dependencies
@@ -53,13 +53,13 @@ Install dependencies
 npm install
 ```
 
-Start development server
+Start the development server
 
 ```bash
 npm run dev
 ```
 
-Create production build
+Create a production build
 
 ```bash
 npm run build
@@ -71,11 +71,11 @@ npm run build
 
 All products are stored in:
 
-```
+```text
 src/data/products.json
 ```
 
-The UI is generated dynamically from this JSON file.
+The application UI is generated dynamically from this JSON file.
 
 ---
 
@@ -111,6 +111,8 @@ The application supports saving bundles locally.
 - Product catalog and user selections are separated.
 - The UI is fully driven by JSON data.
 - Required products are injected automatically.
+- Required products persist after checkout.
+- Subscription plans use a dedicated selection flow.
 - Review and Checkout sections are generated from the current state.
 
 ---
@@ -118,8 +120,7 @@ The application supports saving bundles locally.
 ## Tradeoffs
 
 - No backend integration.
-- Financing values are static.
-- Shipping is implemented according to the provided design.
+- Shipping and financing values are static.
 - No automated tests were added.
 
 ---
