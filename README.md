@@ -9,6 +9,8 @@ A React application that allows users to build a custom home security bundle by 
 - Dynamic review panel
 - Live bundle summary
 - Required products support
+- Dedicated subscription plan selection (single selection without quantity controls)
+- Highlighted product name support driven by product data
 - Save bundle for later using Local Storage
 - Checkout flow
 - JSON-driven product catalog
@@ -77,6 +79,14 @@ src/data/products.json
 
 The application UI is generated dynamically from this JSON file.
 
+Each product can define additional UI behavior through its data, such as:
+
+- Product variants
+- Required products
+- Product badges
+- Highlighted text within product names
+- Product categories
+
 ---
 
 ## State Management
@@ -112,7 +122,8 @@ The application supports saving bundles locally.
 - The UI is fully driven by JSON data.
 - Required products are injected automatically.
 - Required products persist after checkout.
-- Subscription plans use a dedicated selection flow.
+- Subscription plans use a dedicated single-selection flow instead of quantity controls.
+- Highlighted text inside product names is configured directly through the product data.
 - Review and Checkout sections are generated from the current state.
 
 ---
